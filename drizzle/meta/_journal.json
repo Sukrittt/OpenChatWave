@@ -1,0 +1,27 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1693069851463,
+      "tag": "0000_strong_blur",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1693073149361,
+      "tag": "0001_tense_mesmero",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1693075418353,
+      "tag": "0002_wide_doctor_spectrum",
+      "breakpoints": true
+    }
+  ]
+}
