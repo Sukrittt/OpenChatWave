@@ -25,7 +25,7 @@ export const DisplayMessages = ({
   }
 
   return (
-    <div className="flex flex-col-reverse overflow-y-auto no-scrollbar flex-1 gap-y-4 px-4 py-3 border rounded-xl">
+    <div className="flex flex-col-reverse overflow-y-auto no-scrollbar flex-1 gap-y-4 px-4 py-8 border rounded-xl">
       {data.map((eachData, index) => {
         return (
           <MessageCard

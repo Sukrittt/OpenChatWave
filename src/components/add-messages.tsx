@@ -3,11 +3,11 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/icons";
 import { trpc } from "@/trpc/client";
+import { Icons } from "@/components/icons";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { EmojiPicker } from "@/components/emoji-picker";
 
 export const AddMessages = ({ userId }: { userId: string }) => {
   const [message, setMessage] = useState("");
@@ -27,6 +27,7 @@ export const AddMessages = ({ userId }: { userId: string }) => {
 
   return (
     <div className="flex flex-col gap-y-4 w-full">
+      <div className="flex justify-end"></div>
       <div className="relative">
         <Textarea
           value={message}
@@ -44,9 +45,11 @@ export const AddMessages = ({ userId }: { userId: string }) => {
           placeholder="Type your message here."
           onChange={(e) => setMessage(e.target.value)}
         />
+        <div className="absolute right-[72px] top-[17px]">
+          <EmojiPicker onChange={(emoji) => setMessage(message + emoji)} />
+        </div>
         <Button
-          size="sm"
-          className="w-fit absolute right-3 top-3"
+          className="w-fit absolute right-3 top-[9px] rounded-xl"
           disabled={processMessageSend.isLoading}
           onClick={() => processMessageSend.mutate({ text: message, userId })}
         >
