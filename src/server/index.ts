@@ -22,9 +22,12 @@ export const appRouter = router({
       })
     )
     .mutation(async (opts) => {
-      await db
+      const newMessage = await db
         .insert(message)
-        .values({ text: opts.input.text, userId: opts.input.userId });
+        .values({ text: opts.input.text, userId: opts.input.userId })
+        .execute();
+
+      return newMessage;
     }),
 });
 

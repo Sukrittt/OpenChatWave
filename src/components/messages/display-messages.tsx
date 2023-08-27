@@ -1,23 +1,43 @@
 "use client";
+import { useEffect, useState } from "react";
 import { format, isSameDay, subDays } from "date-fns";
 
-import { Message, User } from "@/db/schema";
+import { cn } from "@/lib/utils";
 import { Session } from "next-auth";
 import UserAvatar from "@/components/user-avatar";
-import { cn } from "@/lib/utils";
-
-type ExtendedMessage = {
-  message: Message;
-  user: User;
-};
+import { useSocket } from "@/components/providers/socket-provider";
+import { ExtendedMessage, SocketMessageType } from "@/types";
 
 export const DisplayMessages = ({
-  data,
+  initialData,
   session,
 }: {
-  data: ExtendedMessage[];
+  initialData: ExtendedMessage[];
   session: Session | null;
 }) => {
+  const { isConnected, socket } = useSocket();
+  const [data, setData] = useState(initialData);
+
+  useEffect(() => {
+    if (!socket) return;
+
+    socket.on("global-chat-channel", (socketData: SocketMessageType) => {
+      const content = {
+        ...socketData,
+        message: {
+          ...socketData.message,
+          createdAt: new Date(socketData.message.createdAt),
+        },
+      };
+
+      setData((prevData) => [content, ...prevData]);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, [socket]);
+
   if (data.length === 0) {
     return (
       <p className="text-center text-sm text-muted-foreground">No messages.</p>
