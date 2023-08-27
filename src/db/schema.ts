@@ -83,6 +83,8 @@ export const message = mysqlTable("message", {
   createdAt: timestamp("createdAt").defaultNow(),
 });
 
+export type Message = typeof message.$inferSelect;
+
 //each message has one user
 export const messagesRelation = relations(message, ({ one }) => ({
   author: one(users, {

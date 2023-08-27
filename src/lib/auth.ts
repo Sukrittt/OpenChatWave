@@ -1,5 +1,6 @@
 import { eq } from "drizzle-orm";
 import GithubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 
 import { db } from "@/db";
@@ -21,6 +22,21 @@ function getGithubCredentials() {
   return { clientId, clientSecret };
 }
 
+function getGoogleCredentials() {
+  const clientId = process.env.GOOGLE_CLIENT_ID;
+  const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
+
+  if (!clientId || clientId.length === 0) {
+    throw new Error("Missing GOOGLE_CLIENT_ID");
+  }
+
+  if (!clientSecret || clientSecret.length === 0) {
+    throw new Error("Missing GOOGLE_CLIENT_SECRET");
+  }
+
+  return { clientId, clientSecret };
+}
+
 export const authOptions: NextAuthOptions = {
   adapter: DrizzleAdapter(db),
   session: {
@@ -35,6 +51,10 @@ export const authOptions: NextAuthOptions = {
       clientId: getGithubCredentials().clientId,
       clientSecret: getGithubCredentials().clientSecret,
     }),
+    // GoogleProvider({
+    //   clientId: getGoogleCredentials().clientId,
+    //   clientSecret: getGoogleCredentials().clientSecret,
+    // }),
   ],
   callbacks: {
     async session({ token, session }) {

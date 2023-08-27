@@ -26,12 +26,11 @@ export const AddMessages = ({ userId }: { userId: string }) => {
   });
 
   return (
-    <div className="flex flex-col gap-y-4">
-      <div className="space-y-1.5">
-        <Label htmlFor="message">Message</Label>
+    <div className="flex flex-col gap-y-4 w-full">
+      <div className="relative">
         <Textarea
-          id="message"
           value={message}
+          className="min-h-[3.5rem]"
           onKeyDown={(e) => {
             if (
               e.key === "Enter" &&
@@ -45,18 +44,19 @@ export const AddMessages = ({ userId }: { userId: string }) => {
           placeholder="Type your message here."
           onChange={(e) => setMessage(e.target.value)}
         />
+        <Button
+          size="sm"
+          className="w-fit absolute right-3 top-3"
+          disabled={processMessageSend.isLoading}
+          onClick={() => processMessageSend.mutate({ text: message, userId })}
+        >
+          {processMessageSend.isLoading ? (
+            <Icons.spinner className="h-4 w-4 animate-spin" />
+          ) : (
+            <Icons.send className="h-4 w-4" />
+          )}
+        </Button>
       </div>
-      <Button
-        size="sm"
-        className="w-fit"
-        disabled={processMessageSend.isLoading}
-        onClick={() => processMessageSend.mutate({ text: message, userId })}
-      >
-        {processMessageSend.isLoading && (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        )}
-        Send!
-      </Button>
     </div>
   );
 };
