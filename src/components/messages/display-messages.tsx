@@ -25,7 +25,7 @@ export const DisplayMessages = ({
   }
 
   return (
-    <div className="flex flex-col-reverse overflow-y-auto no-scrollbar flex-1 gap-y-4 px-4 py-2 border rounded-xl">
+    <div className="flex flex-col-reverse overflow-y-auto no-scrollbar flex-1 gap-y-4 px-4 py-3 border rounded-xl">
       {data.map((eachData, index) => {
         return (
           <MessageCard
@@ -108,9 +108,10 @@ const MessageCard = ({
           >
             <div
               className={cn(
-                "border p-2 text-sm rounded-lg rounded-tl-sm w-fit break-words flex",
+                "border py-2 px-3 text-sm rounded-xl w-fit break-words flex",
                 {
                   "rounded-tr-sm": isCurrentUserMessage,
+                  "rounded-tl-sm": !isCurrentUserMessage,
                 }
               )}
             >

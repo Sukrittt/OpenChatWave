@@ -6,7 +6,7 @@ const AuthForm = () => {
   return (
     <div className="flex flex-col gap-y-4">
       <Button onClick={async () => await signIn("github")}>Github</Button>
-      {/* <Button onClick={async () => await signIn("google")}>Google</Button> */}
+      <Button onClick={async () => await signIn("google")}>Google</Button>
     </div>
   );
 };

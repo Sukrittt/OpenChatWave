@@ -51,10 +51,10 @@ export const authOptions: NextAuthOptions = {
       clientId: getGithubCredentials().clientId,
       clientSecret: getGithubCredentials().clientSecret,
     }),
-    // GoogleProvider({
-    //   clientId: getGoogleCredentials().clientId,
-    //   clientSecret: getGoogleCredentials().clientSecret,
-    // }),
+    GoogleProvider({
+      clientId: getGoogleCredentials().clientId,
+      clientSecret: getGoogleCredentials().clientSecret,
+    }),
   ],
   callbacks: {
     async session({ token, session }) {
