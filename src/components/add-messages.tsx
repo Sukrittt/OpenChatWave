@@ -1,8 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import axios from "axios";
-import { useRouter } from "next/navigation";
 
 import { trpc } from "@/trpc/client";
 import { Icons } from "@/components/icons";
@@ -11,12 +9,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { EmojiPicker } from "@/components/emoji-picker";
 import { ExtendedMessage } from "@/types";
 import { User } from "next-auth";
+import { useDebounce } from "@/hooks/use-debounce";
+import { chatTyping, sendMessage } from "@/actions/sockets";
 
 let socket: any;
+
 export const AddMessages = ({ user }: { user: User }) => {
   const [message, setMessage] = useState("");
 
-  const router = useRouter();
+  const [typing, setTyping] = useState(false);
+  const debouncedMessage = useDebounce(message, 2000);
 
   const processMessageSend = trpc.addMessage.useMutation({
     onSuccess: async (newMessage) => {
@@ -37,27 +39,35 @@ export const AddMessages = ({ user }: { user: User }) => {
       };
 
       toast.success("Message sent!");
-      router.refresh();
       setMessage("");
 
-      await sendMessage(socketPayload);
+      sendMessage(socketPayload);
     },
     onError: () => {
       toast.error("Something went wrong");
     },
   });
 
-  const sendMessage = async (socketPayload: ExtendedMessage) => {
-    try {
-      await axios.post("/api/socket/message", socketPayload);
-    } catch (error) {
-      toast.error("Something went wrong");
-    }
-  };
+  useEffect(() => {
+    if (!message) return;
+
+    setTyping(true);
+  }, [message]);
+
+  useEffect(() => {
+    setTyping(false);
+  }, [debouncedMessage]);
+
+  useEffect(() => {
+    chatTyping({
+      name: user.name?.split(" ")[0] ?? "Someone",
+      typing,
+      userId: user.id,
+    });
+  }, [typing, user.name, user.id]);
 
   return (
     <div className="flex flex-col gap-y-4 w-full">
-      <div className="flex justify-end"></div>
       <div className="relative">
         <Textarea
           value={message}

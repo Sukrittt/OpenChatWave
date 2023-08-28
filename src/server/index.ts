@@ -6,12 +6,13 @@ import { message, users } from "@/db/schema";
 import { publicProcedure, router } from "./trpc";
 
 export const appRouter = router({
-  getMessages: publicProcedure.query(async () => {
+  getMessages: publicProcedure.query(async (opts) => {
     const messages = await db
       .select()
       .from(message)
       .orderBy(desc(message.createdAt))
       .innerJoin(users, eq(users.id, message.userId));
+
     return messages;
   }),
   addMessage: publicProcedure

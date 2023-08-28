@@ -25,3 +25,9 @@ export type SocketMessageType = {
   };
   user: User;
 };
+
+export type SocketTypingType = {
+  name: string;
+  userId: string;
+  typing: boolean;
+};

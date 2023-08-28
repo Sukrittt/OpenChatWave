@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { Session } from "next-auth";
 import UserAvatar from "@/components/user-avatar";
 import { useSocket } from "@/components/providers/socket-provider";
-import { ExtendedMessage, SocketMessageType } from "@/types";
+import { ExtendedMessage, SocketMessageType, SocketTypingType } from "@/types";
 
 export const DisplayMessages = ({
   initialData,
@@ -15,8 +15,9 @@ export const DisplayMessages = ({
   initialData: ExtendedMessage[];
   session: Session | null;
 }) => {
-  const { isConnected, socket } = useSocket();
+  const { socket } = useSocket();
   const [data, setData] = useState(initialData);
+  const [usersTyping, setUsersTyping] = useState<SocketTypingType[]>([]);
 
   useEffect(() => {
     if (!socket) return;
@@ -33,10 +34,26 @@ export const DisplayMessages = ({
       setData((prevData) => [content, ...prevData]);
     });
 
+    socket.on("global-chat-typing", (socketData: SocketTypingType) => {
+      handleManageTypingUsers(socketData);
+    });
+
     return () => {
       socket.disconnect();
     };
   }, [socket]);
+
+  const handleManageTypingUsers = (socketData: SocketTypingType) => {
+    if (socketData.typing) {
+      if (session && socketData.userId === session.user.id) return;
+
+      setUsersTyping((prevUsers) => [...prevUsers, socketData]);
+    } else {
+      setUsersTyping((prevUsers) =>
+        prevUsers.filter((eachUser) => eachUser.userId !== socketData.userId)
+      );
+    }
+  };
 
   if (data.length === 0) {
     return (
@@ -45,16 +62,40 @@ export const DisplayMessages = ({
   }
 
   return (
-    <div className="flex flex-col-reverse overflow-y-auto no-scrollbar flex-1 gap-y-4 px-4 py-8 border rounded-xl">
-      {data.map((eachData, index) => {
-        return (
-          <MessageCard
-            key={eachData.message.id}
-            extendedMessage={eachData}
-            sessionId={session?.user.id}
-          />
-        );
-      })}
+    <div className="flex flex-col-reverse overflow-y-auto no-scrollbar flex-1 gap-y-4 px-4 py-9 relative">
+      {data.map((eachData) => (
+        <MessageCard
+          key={eachData.message.id}
+          extendedMessage={eachData}
+          sessionId={session?.user.id}
+        />
+      ))}
+      {usersTyping.length > 0 && (
+        <div
+          className={cn(
+            "text-xs text-muted-foreground tracking-tight absolute left-4 bottom-0",
+            {
+              "bottom-2": !session,
+            }
+          )}
+        >
+          <div className="flex gap-x-1">
+            <div className="flex gap-x-1">
+              {usersTyping.map((user, index) => {
+                const lastUser = usersTyping.length - 1 === index;
+
+                return (
+                  <span className="font-bold" key={user.userId}>
+                    {user.name}
+                    {!lastUser && ","}
+                  </span>
+                );
+              })}
+            </div>
+            is typing...
+          </div>
+        </div>
+      )}
     </div>
   );
 };
