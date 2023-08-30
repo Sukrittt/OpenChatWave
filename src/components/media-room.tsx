@@ -1,7 +1,8 @@
 "use client";
-
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { LiveKitRoom, VideoConference } from "@livekit/components-react";
+
 import "@livekit/components-styles";
 import { Icons } from "@/components/icons";
 import { User } from "@/db/schema";
@@ -14,6 +15,7 @@ interface MediaRoomProps {
 }
 
 export const MediaRoom = ({ roomId, video, audio, user }: MediaRoomProps) => {
+  const router = useRouter();
   const [token, setToken] = useState("");
 
   useEffect(() => {
@@ -42,15 +44,18 @@ export const MediaRoom = ({ roomId, video, audio, user }: MediaRoomProps) => {
   }
 
   return (
-    <LiveKitRoom
-      data-lk-theme="dark"
-      serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_URL}
-      token={token}
-      connect={true}
-      video={video}
-      audio={audio}
-    >
-      <VideoConference />
-    </LiveKitRoom>
+    <div className="container py-8">
+      <LiveKitRoom
+        data-lk-theme="dark"
+        serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_URL}
+        token={token}
+        connect={true}
+        video={video}
+        audio={audio}
+        onDisconnected={() => router.push("/video-chat")}
+      >
+        <VideoConference />
+      </LiveKitRoom>
+    </div>
   );
 };
