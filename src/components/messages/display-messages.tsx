@@ -137,8 +137,8 @@ const MessageCard = ({
   return (
     <div
       className={cn("flex w-full mt-5", {
-        "order-1 justify-end": isCurrentUserMessage,
-        "order-2 justify-start": !isCurrentUserMessage,
+        "justify-end": isCurrentUserMessage,
+        "justify-start": !isCurrentUserMessage,
       })}
     >
       <div
