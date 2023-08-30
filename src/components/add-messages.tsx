@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 import { trpc } from "@/trpc/client";
 import { Icons } from "@/components/icons";
@@ -15,6 +16,7 @@ import { chatTyping, sendMessage } from "@/actions/sockets";
 let socket: any;
 
 export const AddMessages = ({ user }: { user: User }) => {
+  const router = useRouter();
   const [message, setMessage] = useState("");
 
   const [typing, setTyping] = useState(false);
@@ -40,6 +42,7 @@ export const AddMessages = ({ user }: { user: User }) => {
 
       toast.success("Message sent!");
       setMessage("");
+      router.refresh();
 
       sendMessage(socketPayload);
     },

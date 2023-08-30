@@ -6,6 +6,7 @@ import { getAuthSession } from "@/lib/auth";
 import { buttonVariants } from "@/components/ui/button";
 import { UserAccountDropdown } from "@/components/user-account-dropdown";
 import { SocketIndicator } from "@/components/socket-indicator";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 export const Navbar = async () => {
   const session = await getAuthSession();
@@ -32,6 +33,7 @@ export const Navbar = async () => {
             Sign In
           </Link>
         )}
+        <ThemeToggle />
       </div>
     </nav>
   );
