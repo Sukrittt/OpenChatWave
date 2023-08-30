@@ -34,7 +34,7 @@ export const MediaRoom = ({ roomId, video, audio, user }: MediaRoomProps) => {
 
   if (token === "") {
     return (
-      <div className="flex flex-col pt-10 justify-center items-center">
+      <div className="flex flex-col h-screen justify-center items-center">
         <Icons.spinner className="h-7 w-7 text-zinc-500 animate-spin my-4" />
         <p className="text-xs text-zinc-500 dark:text-zinc-400">Loading...</p>
       </div>
