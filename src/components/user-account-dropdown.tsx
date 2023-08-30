@@ -20,6 +20,12 @@ const dropdownItem = [
     Icon: Icons.info,
     href: "/about",
   },
+  {
+    id: 2,
+    label: "Video Chat",
+    Icon: Icons.video,
+    href: "/video-chat",
+  },
 ];
 
 export const UserAccountDropdown = ({ session }: { session: Session }) => {

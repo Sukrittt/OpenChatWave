@@ -5,6 +5,7 @@ import { Icons } from "@/components/icons";
 import { getAuthSession } from "@/lib/auth";
 import { buttonVariants } from "@/components/ui/button";
 import { UserAccountDropdown } from "@/components/user-account-dropdown";
+import { SocketIndicator } from "@/components/socket-indicator";
 
 export const Navbar = async () => {
   const session = await getAuthSession();
@@ -22,7 +23,8 @@ export const Navbar = async () => {
         OpenChatWave
       </Link>
 
-      <div className="flex items-center">
+      <div className="flex items-center gap-x-4">
+        <SocketIndicator />
         {session ? (
           <UserAccountDropdown session={session} />
         ) : (

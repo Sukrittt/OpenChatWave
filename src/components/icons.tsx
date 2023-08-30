@@ -11,6 +11,7 @@ import {
   Sun,
   Twitter,
   User,
+  Video,
 } from "lucide-react";
 
 export const Icons = {
@@ -41,4 +42,5 @@ export const Icons = {
   instagram: Instagram,
   sun: Sun,
   moon: Moon,
+  video: Video,
 };

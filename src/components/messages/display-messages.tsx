@@ -127,7 +127,7 @@ const MessageCard = ({
       return format(providedDate, "'Yesterday at' HH:mm");
     }
 
-    return format(providedDate, "MM/dd/yyyy h:mm a");
+    return format(providedDate, "dd MMM '·' h:mm a");
   };
 
   return (
