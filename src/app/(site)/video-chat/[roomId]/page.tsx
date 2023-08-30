@@ -15,12 +15,15 @@ const VideoRoom = async ({ params }: VideoRoomProps) => {
   if (!session) redirect("/sign-in");
 
   return (
-    <div className="h-screen">
+    <div className="h-[80vh]">
       <MediaRoom
         audio={true}
         video={true}
         roomId={roomId}
-        username={session.user.name ?? "Anonymous"}
+        user={{
+          id: session.user.id,
+          name: session.user.name ?? "Anonymous",
+        }}
       />
     </div>
   );
