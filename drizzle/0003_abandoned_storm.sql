@@ -1,0 +1,1 @@
+ALTER TABLE `account` MODIFY COLUMN `id_token` text;

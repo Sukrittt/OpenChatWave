@@ -57,7 +57,11 @@ export const DisplayMessages = ({
 
   if (data.length === 0) {
     return (
-      <p className="text-center text-sm text-muted-foreground">No messages.</p>
+      <div className="flex justify-center items-center h-full">
+        <p className="text-center text-sm text-muted-foreground">
+          No messages.
+        </p>
+      </div>
     );
   }
 
