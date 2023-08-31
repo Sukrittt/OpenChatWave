@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Metadata } from "next";
 
 import { cn } from "@/lib/utils";
 import { Shell } from "@/components/shell";
@@ -7,12 +6,6 @@ import { getAuthSession } from "@/lib/auth";
 import { Navbar } from "@/components/layout/navbar";
 import { buttonVariants } from "@/components/ui/button";
 import JoinChatRoomByRoomId from "@/components/join-chat-room-room-id";
-
-export const metadata: Metadata = {
-  title: "Video Chat",
-  description:
-    "Connect and collaborate seamlessly through our innovative video chat platform. Create virtual rooms for interactive video sessions or effortlessly join conversations using unique room IDs.",
-};
 
 const VideoChat = async () => {
   const session = await getAuthSession();
