@@ -74,7 +74,7 @@ export const AddMessages = ({ user }: { user: User }) => {
       <div className="relative">
         <Textarea
           value={message}
-          className="min-h-[3.5rem]"
+          className="min-h-[3.5rem] pr-20 lg:pr-28"
           onKeyDown={(e) => {
             if (
               e.key === "Enter" &&
