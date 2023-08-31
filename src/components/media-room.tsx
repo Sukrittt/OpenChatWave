@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LiveKitRoom, VideoConference } from "@livekit/components-react";
 
+import { User } from "@/db/schema";
 import "@livekit/components-styles";
 import { Icons } from "@/components/icons";
-import { User } from "@/db/schema";
+import VideoInfoDropdown from "@/components/video-info-dropdown";
 
 interface MediaRoomProps {
   roomId: string;
@@ -44,7 +45,10 @@ export const MediaRoom = ({ roomId, video, audio, user }: MediaRoomProps) => {
   }
 
   return (
-    <div className="container py-8">
+    <div className="container py-8 relative">
+      <div className="absolute top-12 right-16 z-50">
+        <VideoInfoDropdown roomId={roomId} />
+      </div>
       <LiveKitRoom
         data-lk-theme="dark"
         serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_URL}

@@ -148,7 +148,7 @@ const MessageCard = ({
       >
         <UserAvatar
           user={extendedMessage.user}
-          className="rounded-md h-8 w-8 ring-2 ring-offset-2 ring-primary"
+          className="rounded-md h-8 w-8 ring-2 ring-offset-2 ring-primary ring-offset-background"
         />
 
         <div className="flex flex-col gap-y-1">
