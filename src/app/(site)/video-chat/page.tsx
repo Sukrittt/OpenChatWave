@@ -5,6 +5,7 @@ import { getAuthSession } from "@/lib/auth";
 import JoinChatRoomByRoomId from "@/components/join-chat-room-room-id";
 import { Shell } from "@/components/shell";
 import { Navbar } from "@/components/layout/navbar";
+import { cn } from "@/lib/utils";
 
 const VideoChat = async () => {
   const session = await getAuthSession();
@@ -22,14 +23,16 @@ const VideoChat = async () => {
             chat, and share moments in real time with ease.
           </p>
         </div>
-        <div className="flex gap-x-4 items-center">
+        <div className="flex gap-4 sm:items-center flex-col sm:flex-row">
           <Link
             href={`/video-chat/${session?.user.id}`}
-            className={buttonVariants()}
+            className={cn(buttonVariants(), "w-fit")}
           >
             Create a room
           </Link>
-          <span className="text-muted-foreground text-xs">or</span>
+          <span className="text-muted-foreground text-xs hidden sm:block">
+            or
+          </span>
           <JoinChatRoomByRoomId />
         </div>
       </div>

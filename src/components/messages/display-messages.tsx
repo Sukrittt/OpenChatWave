@@ -142,7 +142,7 @@ const MessageCard = ({
       })}
     >
       <div
-        className={cn("flex gap-x-3 tracking-tight max-w-md", {
+        className={cn("flex gap-x-3 tracking-tight max-w-xs md:max-w-md", {
           "flex-row-reverse": isCurrentUserMessage,
         })}
       >

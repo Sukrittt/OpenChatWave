@@ -88,7 +88,7 @@ export const AddMessages = ({ user }: { user: User }) => {
           placeholder="Type your message here."
           onChange={(e) => setMessage(e.target.value)}
         />
-        <div className="absolute right-[72px] top-[17px]">
+        <div className="absolute right-[72px] top-[17px] hidden lg:block">
           <EmojiPicker onChange={(emoji) => setMessage(message + emoji)} />
         </div>
         <Button

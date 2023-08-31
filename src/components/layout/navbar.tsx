@@ -24,7 +24,9 @@ export const Navbar = async () => {
       </Link>
 
       <div className="flex items-center gap-x-4">
-        <SocketIndicator />
+        <div className="hidden sm:block">
+          <SocketIndicator />
+        </div>
         {session ? (
           <UserAccountDropdown session={session} />
         ) : (
