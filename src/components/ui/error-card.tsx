@@ -1,5 +1,4 @@
 import * as React from "react";
-import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -45,7 +44,7 @@ export function ErrorCard({
       </CardContent>
       {retryLink ? (
         <CardFooter>
-          <Link href={retryLink}>
+          <a href={retryLink}>
             <div
               className={cn(
                 buttonVariants({
@@ -56,7 +55,7 @@ export function ErrorCard({
               {retryLinkText}
               <span className="sr-only">{retryLinkText}</span>
             </div>
-          </Link>
+          </a>
         </CardFooter>
       ) : null}
     </Card>
