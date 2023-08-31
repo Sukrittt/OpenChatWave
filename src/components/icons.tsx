@@ -12,6 +12,7 @@ import {
   Twitter,
   User,
   Video,
+  AlertTriangle,
 } from "lucide-react";
 
 export const Icons = {
@@ -43,4 +44,5 @@ export const Icons = {
   sun: Sun,
   moon: Moon,
   video: Video,
+  warning: AlertTriangle,
 };

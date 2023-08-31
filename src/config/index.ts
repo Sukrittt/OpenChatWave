@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "OpenChatWave",
   description:
-    "Discover a new way to connect with our Next.js web app. Engage in real-time global chats and video chat rooms, bridging distances and fostering instant connections. Join the conversation today and break down barriers through seamless online interactions.",
+    "Discover a new way to connect with our Next.js web app. Engage in real-time global chats and video chat rooms, bridging distances and fostering instant connections.",
 };
 
 export const techStack = [

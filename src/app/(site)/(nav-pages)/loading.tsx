@@ -9,7 +9,7 @@ const HomeLoading = () => {
         <div className="flex flex-col gap-y-4 w-full">
           <div className="relative">
             <Skeleton className="h-[3.5rem] w-full" />
-            <Skeleton className="h-8 w-16 absolute right-3 top-[10px] rounded-xl" />
+            <Skeleton className="h-8 w-12 absolute right-3 top-[10px] rounded-xl" />
           </div>
         </div>
       </div>
