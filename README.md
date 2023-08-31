@@ -1,7 +1,7 @@
 # [OpenChatWave](https://socket-drizzle-practice.vercel.app)
 Showcase images, projects, certificates, experiences, and education seamlessly for a standout professional portfolio.
 
-[![OpenChatWave](./public/images/homepage-snapshot.png)](https://socket-drizzle-practice.vercel.app)
+[![OpenChatWave](./public/homepage-snapshot.png)](https://socket-drizzle-practice.vercel.app)
 
 ## Tech Stack
 
