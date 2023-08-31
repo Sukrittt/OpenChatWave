@@ -1,7 +1,7 @@
-# [OpenChatWave](https://socket-drizzle-practice.vercel.app)
+# [OpenChatWave](https://open-chat-wave.vercel.app)
 Discover a new way to connect with our Next.js web app. Engage in real-time global chats and video chat rooms, bridging distances and fostering instant connections.
 
-[![OpenChatWave](./public/homepage-snapshot.png)](https://socket-drizzle-practice.vercel.app)
+[![OpenChatWave](./public/homepage-snapshot.png)](https://open-chat-wave.vercel.app)
 
 ## Tech Stack
 
@@ -32,7 +32,7 @@ Discover a new way to connect with our Next.js web app. Engage in real-time glob
 1. Clone the repository
 
 ```bash
-git clone https://github.com/Sukrittt/socket-drizzle-practice.git
+git clone https://github.com/Sukrittt/OpenChatWave.git
 ```
 
 2. Install dependencies using pnpm
