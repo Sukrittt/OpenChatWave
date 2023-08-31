@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const About = () => {
   return (
-    <Shell variant="markdown" className="space-y-8 pt-0 md:py-0 ">
+    <Shell variant="markdown" className="pt-0 md:py-0 px-0 ">
       <div>
         <div className="grid gap-1">
           <h1 className="line-clamp-1 text-3xl font-bold tracking-tight py-1">
