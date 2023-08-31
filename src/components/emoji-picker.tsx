@@ -1,7 +1,7 @@
 "use client";
 
-import Picker from "@emoji-mart/react";
-import data from "@emoji-mart/data";
+import Picker from "emoji-picker-react";
+import { Theme } from "emoji-picker-react";
 
 import {
   Popover,
@@ -26,9 +26,10 @@ export const EmojiPicker = ({ onChange }: EmojiPickerProps) => {
         className="bg-transparent border-none shadow-none drop-shadow-none mb-16"
       >
         <Picker
-          theme="dark"
-          data={data}
-          onEmojiSelect={(emoji: any) => onChange(emoji.native)}
+          theme={Theme.DARK}
+          onEmojiClick={(data: any) => {
+            onChange(data.emoji);
+          }}
         />
       </PopoverContent>
     </Popover>

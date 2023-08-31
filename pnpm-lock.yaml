@@ -11,12 +11,6 @@ dependencies:
   '@auth/drizzle-adapter':
     specifier: ^0.3.2
     version: 0.3.2
-  '@emoji-mart/data':
-    specifier: ^1.1.2
-    version: 1.1.2
-  '@emoji-mart/react':
-    specifier: ^1.1.1
-    version: 1.1.1(emoji-mart@5.5.2)(react@18.2.0)
   '@livekit/components-react':
     specifier: ^1.1.5
     version: 1.1.5(livekit-client@1.13.1)(react-dom@18.2.0)(react@18.2.0)
@@ -89,6 +83,9 @@ dependencies:
   emoji-mart:
     specifier: ^5.5.2
     version: 5.5.2
+  emoji-picker-react:
+    specifier: ^4.4.12
+    version: 4.4.12(react@18.2.0)
   eslint:
     specifier: 8.48.0
     version: 8.48.0
@@ -202,20 +199,6 @@ packages:
   /@drizzle-team/studio@0.0.5:
     resolution: {integrity: sha512-ps5qF0tMxWRVu+V5gvCRrQNqlY92aTnIKdq27gm9LZMSdaKYZt6AVvSK1dlUMzs6Rt0Jm80b+eWct6xShBKhIw==}
     dev: true
-
-  /@emoji-mart/data@1.1.2:
-    resolution: {integrity: sha512-1HP8BxD2azjqWJvxIaWAMyTySeZY0Osr83ukYjltPVkNXeJvTz7yDrPLBtnrD5uqJ3tg4CcLuuBW09wahqL/fg==}
-    dev: false
-
-  /@emoji-mart/react@1.1.1(emoji-mart@5.5.2)(react@18.2.0):
-    resolution: {integrity: sha512-NMlFNeWgv1//uPsvLxvGQoIerPuVdXwK/EUek8OOkJ6wVOWPUizRBJU0hDqWZCOROVpfBgCemaC3m6jDOXi03g==}
-    peerDependencies:
-      emoji-mart: ^5.2
-      react: ^16.8 || ^17 || ^18
-    dependencies:
-      emoji-mart: 5.5.2
-      react: 18.2.0
-    dev: false
 
   /@esbuild-kit/core-utils@3.1.0:
     resolution: {integrity: sha512-Uuk8RpCg/7fdHSceR1M6XbSZFSuMrxcePFuGgyvsBn+u339dk5OeL4jv2EojwTN2st/unJGsVm4qHWjWNmJ/tw==}
@@ -2041,6 +2024,11 @@ packages:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
     dev: false
 
+  /clsx@1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
+
   /clsx@2.0.0:
     resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
     engines: {node: '>=6'}
@@ -2336,6 +2324,16 @@ packages:
 
   /emoji-mart@5.5.2:
     resolution: {integrity: sha512-Sqc/nso4cjxhOwWJsp9xkVm8OF5c+mJLZJFoFfzRuKO+yWiN7K8c96xmtughYb0d/fZ8UC6cLIQ/p4BR6Pv3/A==}
+    dev: false
+
+  /emoji-picker-react@4.4.12(react@18.2.0):
+    resolution: {integrity: sha512-CpaOmUvAH4wOFiwkKivOstqPvKPs1KsmvzD0qPApKck4jRAYfhi9StXGZPsR3oWbDS+i720JXUU2ucTbI8ra5A==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      clsx: 1.2.1
+      react: 18.2.0
     dev: false
 
   /emoji-regex@9.2.2:
