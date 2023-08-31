@@ -1,5 +1,5 @@
 # [OpenChatWave](https://socket-drizzle-practice.vercel.app)
-Showcase images, projects, certificates, experiences, and education seamlessly for a standout professional portfolio.
+Discover a new way to connect with our Next.js web app. Engage in real-time global chats and video chat rooms, bridging distances and fostering instant connections.
 
 [![OpenChatWave](./public/homepage-snapshot.png)](https://socket-drizzle-practice.vercel.app)
 
