@@ -30,6 +30,10 @@ export const techStack = [
     url: "https://next-auth.js.org/",
   },
   {
+    name: "tRPC",
+    url: "https://trpc.io/",
+  },
+  {
     name: "Socket.io",
     url: "https://socket.io/",
   },
