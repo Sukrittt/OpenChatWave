@@ -24,7 +24,6 @@ Discover a new way to connect with our Next.js web app. Engage in real-time glob
 - Database on **PlanetScale**
 - End-to-end typesafe APIs with **tRPC**
 - Validation with **Zod**
-- Storing data with **PlanetScale**
 - Responsive design with **Tailwind CSS**
 
 ## Running Locally
